@@ -128,14 +128,6 @@ module.exports = function(grunt) {
   grunt.registerTask('build:dev', ['cssmin', 'stylus']);
   grunt.registerTask('build:test', ['test:prepare:translations', 'build:dev']);
 
-  grunt.registerTask('test:prepare:translations', function() {
-    var i18n  = require('./website/server/libs/i18n'),
-        fs    = require('fs');
-    fs.writeFileSync('test/client-old/spec/mocks/translations.js',
-      "if(!window.env) window.env = {};\n" +
-      "window.env.translations = " + JSON.stringify(i18n.translations['en']) + ';');
-  });
-
   // Load tasks
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
